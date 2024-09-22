@@ -6,7 +6,11 @@ const WebSocket = require('ws');
 const app = express();
 app.use(bodyParser.json());
 
-const allowedOrigins = ['https://bajaj-frontend-1t2d-noxfsgxbd-prasad217s-projects.vercel.app'];
+const allowedOrigins = [
+  'https://bajaj-keerthi-frontend-bfd99e58f298.herokuapp.com',
+  'http://localhost:3000',
+  'http://localhost:3001'
+];
 
 app.use(cors({
     origin: function (origin, callback) {
@@ -18,10 +22,10 @@ app.use(cors({
     }
 }));
 
-const fullName = 'CHOKAMELA KALI PRASADA MANI M';
-const dob = '21072003';
-const email = 'prasadmekala127@gmail.com';
-const rollNumber = 'RA2111003010751';
+const fullName = 'KEERTHI GURUGUBELLI';
+const dob = '15072004';
+const email = 'gg0692@srmist.edu.in';
+const rollNumber = 'RA2111030010093';
 
 function separateData(data) {
     const numbers = [];
@@ -47,7 +51,7 @@ app.post('/bfhl', (req, res) => {
 
     const response = {
         is_success: true,
-        user_id: `${fullName.replace(/\s+/g, '_')}_${dob}`,
+        user_id: ${fullName.replace(/\s+/g, '_')}_${dob},
         email,
         roll_number: rollNumber,
         numbers,
@@ -66,13 +70,18 @@ app.get('/bfhl', (req, res) => {
     res.status(200).json(response);
 });
 
+// Add a root route to resolve the "Cannot GET /" issue
+app.get('/', (req, res) => {
+    res.send('Welcome to the BFHL API');
+});
+
 const server = require('http').createServer(app);
 const wss = new WebSocket.Server({ server });
 
 wss.on('connection', (ws) => {
     console.log('Client connected');
     ws.on('message', (message) => {
-        console.log(`Received message => ${message}`);
+        console.log(Received message => ${message});
     });
 
     ws.send('Hello! Message From Server!!');
@@ -80,5 +89,5 @@ wss.on('connection', (ws) => {
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+    console.log(Server is running on port ${PORT});
 });
