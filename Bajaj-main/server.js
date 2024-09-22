@@ -51,7 +51,7 @@ app.post('/bfhl', (req, res) => {
 
     const response = {
         is_success: true,
-        user_id: ${fullName.replace(/\s+/g, '_')}_${dob},
+        user_id: `${fullName.replace(/\s+/g, '_')}_${dob}`,
         email,
         roll_number: rollNumber,
         numbers,
@@ -81,7 +81,7 @@ const wss = new WebSocket.Server({ server });
 wss.on('connection', (ws) => {
     console.log('Client connected');
     ws.on('message', (message) => {
-        console.log(Received message => ${message});
+        console.log(`Received message => ${message}`);
     });
 
     ws.send('Hello! Message From Server!!');
@@ -89,5 +89,5 @@ wss.on('connection', (ws) => {
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
-    console.log(Server is running on port ${PORT});
+    console.log(`Server is running on port ${PORT}`);
 });
