@@ -7,7 +7,7 @@ const app = express();
 app.use(bodyParser.json());
 
 const allowedOrigins = [
-  'https://bajaj-keerthi-frontend-bfd99e58f298.herokuapp.com',
+  'https://bajaj-saketh-backend-bfd99e58f298.herokuapp.com',
   'http://localhost:3000',
   'http://localhost:3001'
 ];
@@ -22,10 +22,10 @@ app.use(cors({
     }
 }));
 
-const fullName = 'KEERTHI GURUGUBELLI';
-const dob = '15072004';
-const email = 'gg0692@srmist.edu.in';
-const rollNumber = 'RA2111030010093';
+const fullName = 'SAKETH REDDY';
+const dob = '08102003';
+const email = 'nn7338@srmist.edu.in';
+const rollNumber = 'RA2111003010831';
 
 function separateData(data) {
     const numbers = [];
